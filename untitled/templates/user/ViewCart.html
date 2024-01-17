@@ -1,0 +1,59 @@
+{% extends 'user/userindex.html'%}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+    {% if data %}
+<table width="531" border="1" class="table table-dark">
+  <tr>
+    <th width="21" scope="col">#</th>
+    <th width="69" scope="col">Dress Photo</th>
+    <th width="88" scope="col">Dress Name</th>
+    <th width="99" scope="col">Quatity</th>
+    <th width="73" scope="col">Price</th>
+    <th width="72" scope="col">Details</th>
+    <th width="63" scope="col"></th>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td height="60">{{ forloop.counter }}</td>
+    <td><img src="{{ i.DRESS.dressphoto }}"width="100px"height="100px"> </td>
+    <td>{{ i.DRESS.dressname}}</td>
+    <td>
+        {% if i.count >=  i.DRESS.count %}
+            Left {{  i.DRESS.count }}
+        {% else %}
+            {{ i.count }}
+        {% endif %}
+  </td>
+    <td>{{ i.DRESS.dressprice }}</td>
+    <td>{{ i.DRESS.details }}</td>
+      {% if i.DRESS.count == '0' %}
+      <td><font color="red">Out of stock</font> </td>
+      {% else %}
+    <td><a href="delete_cartitem/{{ i.id }}">Delete</a></td>
+  {% endif %}
+  </tr>
+    {% endfor %}
+  <tr>
+    <td height="49" colspan="7">  GRAND TOTAL: {{ s }}</td>
+    </tr>
+  <tr>
+    <td height="49" colspan="7"><a href="/orderbyuseraddress/{{ s }}#abc"> Order Now!</a></td>
+    </tr>
+</table>
+        {% else %}
+      <center>  <img src="/media/a.png" alt=""/></center>
+    {% endif %}
+
+</form>
+</body>
+</html>
+{% endblock %}

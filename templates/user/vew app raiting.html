@@ -1,0 +1,40 @@
+{% extends 'user/userindex.html' %}
+{% block body %}
+    <form id="form1" name="form1" method="post" action="">
+  <table class="table table-bordered">
+    <tr>
+      <th>#</th>
+      <th>Rating</th>
+        <th scope="col">UserInfo</th>
+
+    <th scope="col">DressInfo</th>
+
+    <th scope="col">Photo</th>
+        <th scope="col">Date</th>
+
+
+
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>&nbsp;{{ loop.index }}</td>
+      <td >
+                <img src="{{ i.rating.0 }}" width="20" height="20">
+                <img src="{{ i.rating.1 }}" width="20" height="20">
+                <img src="{{ i.rating.2 }}" width="20" height="20">
+                <img src="{{ i.rating.3 }}" width="20" height="20">
+                <img src="{{ i.rating.4 }}" width="20" height="20">
+            </td>
+    <td>{{ i.USER.username }}<br>{{ i.USER.email }}<br>{{ i.USER.phonenumber }}</td>
+          <td>{{ i.DRESS.dressname }}<br>{{ i.DRESS.dressprice }}<br>{{ i.DRESS.details }}<br>{{ i.DRESS.count }}</td>
+
+
+     <td><img src="{{ i.DRESS.dressphoto }}" width="100px" height="100px"> </td>
+        <td>{{ i.date }}</td>
+
+
+    </tr>
+       {% endfor %}
+  </table>
+</form>
+{% endblock %}

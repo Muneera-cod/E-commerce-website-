@@ -1,0 +1,35 @@
+{% extends 'user/userindex.html' %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/orderchoose_post/{{ amount }}/{{ orderid }}">
+    {% csrf_token %}
+  <table width="402" border="1">
+    <tr>
+      <th width="207" height="103" scope="row">Choose payment Option</th>
+      <td width="179"><p>
+        <label>
+<input type="radio" name="RadioGroup1" value="Online" id="RadioGroup1_0" />
+Online</label>
+        <br />
+        <label>
+          <input type="radio" name="RadioGroup1" value="Offline" id="RadioGroup1_1" />
+          Offline</label>
+        <br />
+      </p></td>
+    </tr>
+    <tr>
+      <th height="54" colspan="2" scope="row"><input type="submit" name="button" id="button" value="PAY" /></th>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

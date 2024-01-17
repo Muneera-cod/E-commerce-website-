@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form action="/editdress_post/{{ data.id }}" method="post" enctype="multipart/form-data" name="form1" id="form1"><table width="322" border="1">
+  {% csrf_token %}
+    <tr>
+    <th width="165" scope="row"><label for="textfield"></label>
+      Category</th>
+    <td width="141"><label for="select"></label>
+      <select name="select" id="select">
+      {% for i in datas %}
+          <option value="{{ i.id }}">{{ i.category }}</option>
+          {% endfor %}
+      </select></td>
+  </tr>
+  <tr>
+    <th scope="row">Name</th>
+    <td><label for="textfield2"></label>
+      <input type="text" name="textfield" id="textfield2" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Photo</th>
+    <td><label for="fileField"></label>
+      <input type="file" name="fileField" id="fileField" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Price</th>
+    <td><label for="textfield3"></label>
+      <input type="text" name="textfield2" id="textfield3" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Details</th>
+    <td><label for="textfield4"></label>
+      <input type="text" name="textfield3" id="textfield4" /></td>
+  </tr>
+<tr>
+    <th scope="row">count</th>
+    <td><label for="textfield4"></label>
+      <input type="text" name="textfield4" id="textfield4" /></td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row"><input type="submit" name="button" id="button" value="Update" /></th>
+    </tr>
+</table>
+
+</form>
+</body>
+</html>

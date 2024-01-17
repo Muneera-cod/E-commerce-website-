@@ -1,0 +1,61 @@
+{% extends 'user/userindex.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/viewdressusersearch#abc">
+{% csrf_token %}
+  <table width="263" border="1" class="table table-dark">
+    <tr>
+      <th width="164" scope="row">Category</th>
+      <td width="83"><label for="select"></label>
+        <select name="select" id="select">
+            {% for i in d %}
+            <option value="{{ i.id }}">{{ i.category }}</option>
+            {% endfor %}
+      </select></td>
+    </tr>
+    <tr>
+      <th colspan="2" scope="row"><input type="submit" name="button" id="button" value="Search" /></th>
+    </tr>
+  </table>
+  <br />
+  <br />
+  <table width="536" border="1" class="table table-dark">
+    <tr>
+      <th width="34" height="34" scope="col">SL NO</th>
+      <th width="73" scope="col">Category Name</th>
+      <th width="51" scope="col">Dress Name</th>
+      <th width="42" scope="col">Photo</th>
+      <th width="63" scope="col">Price</th>
+      <th width="71" scope="col">Count</th>
+      <th width="71" scope="col">Details</th>
+{#              <th width="71" scope="col">View ratings</th>#}
+
+      <th width="79" scope="col">&nbsp;</th>
+      <th width="79" scope="col">&nbsp;</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td height="44">{{ forloop.counter }}</td>
+      <td>{{ i.DRESS_CATEGORY.category }}</td>
+      <td>{{ i.dressname }}</td>
+      <td><img src="{{ i.dressphoto }}"width="100px"height="100px"> </td>
+      <td>{{ i.dressprice }}</td>
+      <td>{{ i.count }}</td>
+      <td>{{ i.details }}</td>
+
+      <td><a href="/addtocart/{{ i.id }}#abc">Add to Cart</a></td>
+      <td><a href="/view_rating/{{ i.id }}#abc">view rating</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

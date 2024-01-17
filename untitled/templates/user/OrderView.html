@@ -1,0 +1,37 @@
+{% extends 'user/userindex.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="399" border="1">
+    <tr>
+      <th width="8" scope="col">#</th>
+      <th width="43" scope="col">Dress Name</th>
+      <th width="51" scope="col">Dress Photo</th>
+      <th width="56" scope="col">Quatity</th>
+      <th width="73" scope="col">Price</th>
+      <th width="128" scope="col">Total Price</th>
+        <th></th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ i.DRESS.dressname }}</td>
+      <td><img src="{{ i.DRESS.dressphoto }}"width="100px" height="100px"></td>
+      <td>{{ i.count }}</td>
+      <td>{{ i.DRESS.dressprice }}</td>
+      <td>{{ i.t }}</td>
+    <td><a href="/rate/{{ i.DRESS.id }}">Send rating</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

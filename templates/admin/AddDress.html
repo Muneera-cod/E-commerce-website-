@@ -1,0 +1,57 @@
+{% extends 'admin/adminindex.html' %}
+{% block body %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body><form action="/add_dress_post" method="post" enctype="multipart/form-data">
+    <table width="309" border="1" class="table table-dark">
+{% csrf_token %}
+  <tr>
+    <th width="164" scope="row">CATEGORY</th>
+    <td width="129">
+      <select name="select" id="select" class="form-control">
+          {% for i in data %}
+                <option value="{{ i.id }}">{{ i.category }}</option>
+          {% endfor %}
+      </select></td>
+  </tr>
+  <tr>
+    <th scope="row">NAME</th>
+    <td>
+      <input type="text" name="textfield" id="textfield" class="form-control" required /></td>
+  </tr>
+  <tr>
+    <th scope="row">PHOTO</th>
+    <td>
+      <input type="file" name="fileField" id="fileField" class="form-control" required /></td>
+  </tr>
+  <tr>
+    <th scope="row">PRICE</th>
+    <td>
+      <input type="text" name="textfield2" id="textfield2" class="form-control" required /></td>
+  </tr>
+
+   <tr>
+      <th scope="row">DETAILS</th>
+      <td>
+      <textarea name="textarea" id="textarea" cols="45" rows="5"></textarea></td>
+    </tr>
+    <tr>
+    <th scope="row">COUNT</th>
+    <td>
+      <input type="text" name="textfield4" id="textfield4" class="form-control" required /></td>
+  </tr>
+
+  <tr>
+    <th colspan="2" scope="row"><input type="submit" name="button" id="button" value="Add" /></th>
+    </tr>
+</table>
+</form>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'admin/adminindex.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form action="/editdress_post/{{ data.id }}" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    <table width="322" border="1" class="table table-dark">
+  {% csrf_token %}
+    <tr>
+    <th width="165" scope="row"><label for="textfield"></label>
+      Category</th>
+    <td width="141"><label for="select"></label>
+      <select name="select" id="select">
+      {% for i in datas %}
+          <option value="{{ i.id }}">{{ i.category }}</option>
+          {% endfor %}
+      </select></td>
+  </tr>
+  <tr>
+    <th scope="row">Name</th>
+    <td>
+      <input type="text" name="textfield" id="textfield2" class="form-control"  value="{{ data.dressname }}" required/></td>
+  </tr>
+  <tr>
+    <th scope="row">Photo</th>
+    <td>
+        <img src="{{ data.dressphoto }}" alt="" width="100px" height="100px">
+      <input type="file" name="fileField" id="fileField" class="form-control" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Price</th>
+    <td>
+      <input type="text" name="textfield2" id="textfield3" class="form-control" value="{{ data.dressprice }}" required/></td>
+  </tr>
+   <tr>
+      <th scope="row">DETAILS</th>
+      <td>
+      <textarea name="textarea" id="textarea" cols="45" rows="5" class="form-control" >{{ data.details }}</textarea></td>
+    </tr>
+<tr>
+    <th scope="row">count</th>
+    <td>
+      <input type="text" name="textfield4" id="textfield4" class="form-control" value="{{ data.count }}"/></td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row"><input type="submit" name="button" id="button" value="Update" /></th>
+    </tr>
+</table>
+
+</form>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'admin/adminindex.html' %}
+{% block body %}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action=""><table width="246" border="1">
+  <tr>
+    <th width="11" scope="col"><h3>#</h3></th>
+    <th width="70" scope="col">dressinfo</th>
+    <th width="84" scope="col">dressphoto</th>
+    <th width="29" scope="col">count</th>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ i.DRESS.DRESS_CATEGORY.category }}<br>{{ i.DRESS.dressname }}<br>{{ i.DRESS.dressprice }}<br>{{ i.DRESS.details }}</td>
+    <td><img src="{{ i.DRESS.dressphoto }}" width="100px" height="100px"> </td>
+    <td>{{ i.count }}</td>
+  </tr>
+    {% endfor %}
+</table>
+
+</form>
+</body>
+</html>
+{% endblock %}
